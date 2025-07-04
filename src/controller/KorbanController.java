@@ -1,24 +1,27 @@
 package controller;
 
-import model.Korban;
 import java.util.ArrayList;
+import model.Korban;
 
 public class KorbanController {
-    private ArrayList<Korban> data = new ArrayList<>();
+    private ArrayList<Korban> daftarKorban = new ArrayList<>();
 
-    public void tambah(Korban k) {
-        data.add(k);
+    public void tambahKorban(Korban korban) {
+        daftarKorban.add(korban);
     }
 
-    public void update(int index, Korban k) {
-        data.set(index, k);
+    public ArrayList<Korban> getAllKorban() {
+        return daftarKorban;
     }
 
-    public void hapus(int index) {
-        data.remove(index);
+    public Korban cariById(int id) {
+        for (Korban k : daftarKorban) {
+            if (k.getId() == id) return k;
+        }
+        return null;
     }
 
-    public ArrayList<Korban> getAll() {
-        return data;
+    public void hapusKorban(int id) {
+        daftarKorban.removeIf(k -> k.getId() == id);
     }
 }
